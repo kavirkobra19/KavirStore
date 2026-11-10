@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">فروشگاه کویر</string>
+
+    <string name="tab_home">خانه</string>
+    <string name="tab_categories">دسته‌بندی‌ها</string>
+    <string name="tab_search">جستجو</string>
+    <string name="tab_my_apps">برنامه‌های من</string>
+    <string name="tab_settings">تنظیمات</string>
+
+    <string name="featured">ویژه</string>
+    <string name="recently_updated">به‌روزرسانی‌های اخیر</string>
+    <string name="all_apps">همه برنامه‌ها</string>
+    <string name="app_count">%1$s برنامه</string>
+    <string name="back">بازگشت</string>
+    <string name="refresh">تازه‌سازی</string>
+
+    <string name="install">نصب</string>
+    <string name="update">به‌روزرسانی</string>
+    <string name="open">باز کردن</string>
+    <string name="uninstall">حذف نصب</string>
+    <string name="cancel">لغو</string>
+    <string name="retry">تلاش دوباره</string>
+    <string name="ok">تأیید</string>
+    <string name="update_all">به‌روزرسانی همه</string>
+    <string name="updates_available">به‌روزرسانی‌های موجود</string>
+    <string name="installed_apps">نصب‌شده‌ها</string>
+    <string name="no_updates">همه‌چیز به‌روز است</string>
+    <string name="nothing_installed">هنوز هیچ‌کدام از برنامه‌های فروشگاه نصب نشده است</string>
+
+    <string name="downloading">در حال دانلود…</string>
+    <string name="verifying">در حال بررسی…</string>
+    <string name="installing">در انتظار نصب‌کننده اندروید…</string>
+
+    <string name="search_hint">جستجوی برنامه</string>
+    <string name="no_results">برنامه‌ای پیدا نشد</string>
+
+    <string name="description">توضیحات</string>
+    <string name="whats_new">تغییرات نسخه</string>
+    <string name="screenshots">تصاویر</string>
+    <string name="information">اطلاعات</string>
+    <string name="version">نسخه</string>
+    <string name="size">حجم</string>
+    <string name="min_android">نیازمند اندروید</string>
+    <string name="updated">به‌روزرسانی</string>
+    <string name="package_name">نام بسته</string>
+    <string name="source_code">منبع در گیت‌هاب</string>
+    <string name="no_changelog">توضیحی برای تغییرات ثبت نشده است.</string>
+    <string name="installed_version">نسخه نصب‌شده: %1$s</string>
+
+    <string name="offline_cached">آفلاین — فهرست ذخیره‌شده نمایش داده می‌شود</string>
+    <string name="load_failed">بارگذاری فهرست ناموفق بود</string>
+    <string name="load_failed_hint">اتصال اینترنت را بررسی کنید و دوباره تلاش کنید.</string>
+    <string name="empty_catalog">فهرست فعلاً خالی است.</string>
+
+    <string name="settings_language">زبان</string>
+    <string name="settings_theme">پوسته</string>
+    <string name="lang_system">پیش‌فرض سیستم</string>
+    <string name="lang_en">English</string>
+    <string name="lang_fa">فارسی</string>
+    <string name="theme_system">پیش‌فرض سیستم</string>
+    <string name="theme_light">روشن</string>
+    <string name="theme_dark">تیره</string>
+    <string name="settings_about">درباره</string>
+    <string name="about_text">فروشگاه کویر، یک فروشگاه برنامه شخصی است. برنامه‌ها مستقیم از Releaseهای گیت‌هاب دانلود و با نصب‌کننده رسمی اندروید نصب می‌شوند.</string>
+    <string name="catalog_source">فهرست: %1$s</string>
+
+    <string name="cat_all">همه</string>
+    <string name="cat_tools">ابزارها</string>
+    <string name="cat_games">بازی‌ها</string>
+    <string name="cat_social">اجتماعی</string>
+    <string name="cat_media">چندرسانه‌ای</string>
+    <string name="cat_productivity">بهره‌وری</string>
+    <string name="cat_education">آموزشی</string>
+    <string name="cat_communication">ارتباطات</string>
+    <string name="cat_other">سایر</string>
+
+    <string name="err_incompatible">نیازمند اندروید %1$s یا بالاتر</string>
+    <string name="err_network">خطای شبکه. اتصال اینترنت را بررسی کنید.</string>
+    <string name="err_hash">فایل دانلودشده سالم نیست (عدم تطابق چک‌سام).</string>
+    <string name="err_package">فایل APK با این برنامه مطابقت ندارد (%1$s).</string>
+    <string name="err_version">نسخه APK با فهرست مطابقت ندارد.</string>
+    <string name="err_signature">امضای این نسخه با برنامه نصب‌شده فرق دارد. ابتدا برنامه را حذف کنید (اطلاعات آن پاک می‌شود).</string>
+    <string name="err_storage">فضای ذخیره‌سازی کافی نیست.</string>
+    <string name="err_install">نصب ناموفق بود: %1$s</string>
+    <string name="err_no_release">نسخه‌ای برای دانلود موجود نیست.</string>
+    <string name="err_untrusted">آدرس دانلود مطمئن نیست.</string>
+
+    <string name="perm_title">اجازه نصب برنامه</string>
+    <string name="perm_text">اندروید برای نصب برنامه توسط فروشگاه کویر به اجازه شما نیاز دارد. هر زمان بخواهید می‌توانید آن را خاموش کنید.</string>
+    <string name="perm_open">باز کردن تنظیمات</string>
+
+    <string name="admin_title">پنل مدیریت</string>
+    <string name="admin_login_title">ورود مدیر</string>
+    <string name="admin_login_hint">توکن گیت‌هاب</string>
+    <string name="admin_login_help">یک توکن Fine-grained برای ریپوی فروشگاه با دسترسی Contents (خواندن/نوشتن) و Actions (خواندن/نوشتن) بسازید. توکن فقط به‌صورت رمزنگاری‌شده روی همین دستگاه ذخیره می‌شود.</string>
+    <string name="admin_login">ورود</string>
+    <string name="admin_logout">خروج</string>
+    <string name="admin_signed_in">وارد شده‌اید</string>
+    <string name="admin_not_authorized">این توکن دسترسی نوشتن به ریپوی فروشگاه ندارد.</string>
+    <string name="admin_error">خطا: %1$s</string>
+    <string name="admin_rate_limited">محدودیت درخواست گیت‌هاب پر شده است. بعداً تلاش کنید.</string>
+    <string name="admin_add_app">افزودن برنامه</string>
+    <string name="admin_repo_url">آدرس ریپوی گیت‌هاب</string>
+    <string name="admin_fetch_info">تشخیص اطلاعات</string>
+    <string name="admin_invalid_repo">این آدرس شبیه یک ریپوی گیت‌هاب نیست.</string>
+    <string name="admin_detected">شناسایی شد: %1$s</string>
+    <string name="admin_latest_release">آخرین نسخه: %1$s</string>
+    <string name="admin_no_apk">هنوز Releaseی که APK داشته باشد پیدا نشد.</string>
+    <string name="admin_apks">فایل‌های APK: %1$s</string>
+    <string name="admin_save">ذخیره</string>
+    <string name="admin_add">افزودن</string>
+    <string name="admin_edit">ویرایش</string>
+    <string name="admin_enabled">فعال</string>
+    <string name="admin_featured">ویژه</string>
+    <string name="admin_remove">حذف</string>
+    <string name="admin_remove_confirm">%1$s از فهرست حذف شود؟ ریپوی گیت‌هاب آن دست‌نخورده می‌ماند.</string>
+    <string name="admin_refresh">تازه‌سازی نسخه‌ها</string>
+    <string name="admin_synced">ذخیره شد. workflow فهرست به‌زودی تغییر را اعمال می‌کند.</string>
+    <string name="admin_sync_started">تازه‌سازی فهرست شروع شد. ممکن است یکی دو دقیقه طول بکشد.</string>
+    <string name="admin_sync_failed">تغییر ذخیره شد، اما شروع تازه‌سازی ممکن نبود (شاید توکن دسترسی Actions ندارد). به‌طور خودکار ظرف یک ساعت اجرا می‌شود.</string>
+    <string name="admin_field_name">نام (اختیاری)</string>
+    <string name="admin_field_name_fa">نام فارسی (اختیاری)</string>
+    <string name="admin_field_description">توضیحات (اختیاری)</string>
+    <string name="admin_field_description_fa">توضیحات فارسی (اختیاری)</string>
+    <string name="admin_field_icon">آدرس آیکون (اختیاری)</string>
+    <string name="admin_field_screenshots">آدرس تصاویر، هر خط یکی (اختیاری)</string>
+    <string name="admin_field_asset">الگوی نام APK، regex (اختیاری)</string>
+    <string name="admin_field_category">دسته‌بندی</string>
+    <string name="admin_prerelease">شامل نسخه‌های پیش‌انتشار</string>
+    <string name="admin_pending">در انتظار اولین همگام‌سازی</string>
+    <string name="admin_current_version">نسخه فعلی: %1$s</string>
+    <string name="admin_empty">هنوز برنامه‌ای ثبت نشده است.</string>
+</resources>

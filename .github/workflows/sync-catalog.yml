@@ -1,0 +1,59 @@
+name: Sync catalog
+
+# Detects new GitHub Releases of every registered app and rewrites catalog/apps.json.
+on:
+  schedule:
+    - cron: "17 * * * *"          # hourly
+  workflow_dispatch:               # "Refresh releases" in the admin panel, or the Actions tab
+  repository_dispatch:
+    types: [app-release]           # optional: a registered app can ping us right after publishing
+  push:
+    branches: [main]
+    paths:
+      - "catalog/sources.json"     # admin added / edited / removed an app
+      - "scripts/sync_catalog.py"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: sync-catalog
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Run tests
+        run: python scripts/test_sync.py
+
+      - name: Synchronize releases
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
+        run: python scripts/sync_catalog.py
+
+      - name: Commit catalog changes
+        run: |
+          git config user.name "kavir-store-bot"
+          git config user.email "kavir-store-bot@users.noreply.github.com"
+          git add catalog
+          if git diff --cached --quiet; then
+            echo "Nothing to commit."
+            exit 0
+          fi
+          git commit -m "chore(catalog): sync releases"
+          for i in 1 2 3; do
+            git pull --rebase origin main && git push origin HEAD:main && exit 0
+            sleep 5
+          done
+          echo "Could not push catalog changes" >&2
+          exit 1

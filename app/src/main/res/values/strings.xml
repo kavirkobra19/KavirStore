@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Kavir Store</string>
+
+    <string name="tab_home">Home</string>
+    <string name="tab_categories">Categories</string>
+    <string name="tab_search">Search</string>
+    <string name="tab_my_apps">My apps</string>
+    <string name="tab_settings">Settings</string>
+
+    <string name="featured">Featured</string>
+    <string name="recently_updated">Recently updated</string>
+    <string name="all_apps">All apps</string>
+    <string name="app_count">%1$s apps</string>
+    <string name="back">Back</string>
+    <string name="refresh">Refresh</string>
+
+    <string name="install">Install</string>
+    <string name="update">Update</string>
+    <string name="open">Open</string>
+    <string name="uninstall">Uninstall</string>
+    <string name="cancel">Cancel</string>
+    <string name="retry">Try again</string>
+    <string name="ok">OK</string>
+    <string name="update_all">Update all</string>
+    <string name="updates_available">Updates available</string>
+    <string name="installed_apps">Installed</string>
+    <string name="no_updates">Everything is up to date</string>
+    <string name="nothing_installed">None of the store apps are installed yet</string>
+
+    <string name="downloading">Downloading…</string>
+    <string name="verifying">Verifying…</string>
+    <string name="installing">Waiting for the installer…</string>
+
+    <string name="search_hint">Search apps</string>
+    <string name="no_results">No apps found</string>
+
+    <string name="description">Description</string>
+    <string name="whats_new">Changelog</string>
+    <string name="screenshots">Screenshots</string>
+    <string name="information">Information</string>
+    <string name="version">Version</string>
+    <string name="size">Size</string>
+    <string name="min_android">Requires Android</string>
+    <string name="updated">Updated</string>
+    <string name="package_name">Package</string>
+    <string name="source_code">Source on GitHub</string>
+    <string name="no_changelog">No changelog provided.</string>
+    <string name="installed_version">Installed version: %1$s</string>
+
+    <string name="offline_cached">Offline — showing the saved catalog</string>
+    <string name="load_failed">Couldn\'t load the catalog</string>
+    <string name="load_failed_hint">Check your connection and try again.</string>
+    <string name="empty_catalog">The catalog is empty for now.</string>
+
+    <string name="settings_language">Language</string>
+    <string name="settings_theme">Theme</string>
+    <string name="lang_system">System default</string>
+    <string name="lang_en">English</string>
+    <string name="lang_fa">فارسی</string>
+    <string name="theme_system">System default</string>
+    <string name="theme_light">Light</string>
+    <string name="theme_dark">Dark</string>
+    <string name="settings_about">About</string>
+    <string name="about_text">Kavir Store — a personal app store. Apps are downloaded straight from their GitHub Releases and installed through Android\'s own installer.</string>
+    <string name="catalog_source">Catalog: %1$s</string>
+
+    <string name="cat_all">All</string>
+    <string name="cat_tools">Tools</string>
+    <string name="cat_games">Games</string>
+    <string name="cat_social">Social</string>
+    <string name="cat_media">Media</string>
+    <string name="cat_productivity">Productivity</string>
+    <string name="cat_education">Education</string>
+    <string name="cat_communication">Communication</string>
+    <string name="cat_other">Other</string>
+
+    <string name="err_incompatible">Requires Android %1$s or newer</string>
+    <string name="err_network">Network error. Check your connection.</string>
+    <string name="err_hash">The download is corrupted (checksum mismatch).</string>
+    <string name="err_package">The APK doesn\'t match this app (%1$s).</string>
+    <string name="err_version">The APK version doesn\'t match the catalog.</string>
+    <string name="err_signature">The signature differs from the installed app. Uninstall it first (its data will be lost).</string>
+    <string name="err_storage">Not enough storage space.</string>
+    <string name="err_install">Installation failed: %1$s</string>
+    <string name="err_no_release">No release is available.</string>
+    <string name="err_untrusted">Untrusted download address.</string>
+
+    <string name="perm_title">Allow installs</string>
+    <string name="perm_text">Android needs your permission before Kavir Store can install apps. You can turn it off again at any time.</string>
+    <string name="perm_open">Open settings</string>
+
+    <string name="admin_title">Admin panel</string>
+    <string name="admin_login_title">Sign in as administrator</string>
+    <string name="admin_login_hint">GitHub token</string>
+    <string name="admin_login_help">Use a fine-grained token for the store repository with Contents: read/write and Actions: read/write. The token is stored encrypted on this device only.</string>
+    <string name="admin_login">Sign in</string>
+    <string name="admin_logout">Sign out</string>
+    <string name="admin_signed_in">Signed in</string>
+    <string name="admin_not_authorized">This token has no write access to the store repository.</string>
+    <string name="admin_error">Error: %1$s</string>
+    <string name="admin_rate_limited">GitHub rate limit reached. Try again later.</string>
+    <string name="admin_add_app">Add app</string>
+    <string name="admin_repo_url">GitHub repository URL</string>
+    <string name="admin_fetch_info">Detect info</string>
+    <string name="admin_invalid_repo">That doesn\'t look like a GitHub repository.</string>
+    <string name="admin_detected">Detected: %1$s</string>
+    <string name="admin_latest_release">Latest release: %1$s</string>
+    <string name="admin_no_apk">No release with an APK was found yet.</string>
+    <string name="admin_apks">APK files: %1$s</string>
+    <string name="admin_save">Save</string>
+    <string name="admin_add">Add</string>
+    <string name="admin_edit">Edit</string>
+    <string name="admin_enabled">Enabled</string>
+    <string name="admin_featured">Featured</string>
+    <string name="admin_remove">Remove</string>
+    <string name="admin_remove_confirm">Remove %1$s from the catalog? Its GitHub repository is not touched.</string>
+    <string name="admin_refresh">Refresh releases</string>
+    <string name="admin_synced">Saved. The catalog workflow will pick up the change shortly.</string>
+    <string name="admin_sync_started">Catalog refresh started. It can take a minute or two.</string>
+    <string name="admin_sync_failed">The change is saved, but the refresh couldn\'t be started (the token may lack Actions permission). It will run automatically within the hour.</string>
+    <string name="admin_field_name">Name (optional)</string>
+    <string name="admin_field_name_fa">Persian name (optional)</string>
+    <string name="admin_field_description">Description (optional)</string>
+    <string name="admin_field_description_fa">Persian description (optional)</string>
+    <string name="admin_field_icon">Icon URL (optional)</string>
+    <string name="admin_field_screenshots">Screenshot URLs, one per line (optional)</string>
+    <string name="admin_field_asset">APK name pattern, regex (optional)</string>
+    <string name="admin_field_category">Category</string>
+    <string name="admin_prerelease">Include pre-releases</string>
+    <string name="admin_pending">Waiting for the first sync</string>
+    <string name="admin_current_version">Current version: %1$s</string>
+    <string name="admin_empty">No apps registered yet.</string>
+</resources>

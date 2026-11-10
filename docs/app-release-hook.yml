@@ -1,0 +1,27 @@
+# OPTIONAL. Copy this file to .github/workflows/notify-kavir-store.yml in a REGISTERED APP's repository
+# to make Kavir Store pick up a new release within a minute instead of within the hour.
+#
+# Needs one secret in the app's repository:
+#   KAVIR_STORE_TOKEN = fine-grained token for kavirkobra19/KavirStore with "Contents: Read and write"
+#                       (repository_dispatch requires that permission).
+#
+# Without this file everything still works: the store polls every registered repo hourly.
+name: Notify Kavir Store
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Ask Kavir Store to sync
+        env:
+          TOKEN: ${{ secrets.KAVIR_STORE_TOKEN }}
+        run: |
+          curl -sS -f -X POST \
+            -H "Authorization: Bearer $TOKEN" \
+            -H "Accept: application/vnd.github+json" \
+            https://api.github.com/repos/kavirkobra19/KavirStore/dispatches \
+            -d '{"event_type":"app-release","client_payload":{"repo":"${{ github.repository }}"}}'

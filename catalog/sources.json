@@ -1,0 +1,19 @@
+{
+  "schema": 1,
+  "apps": [
+    {
+      "repo": "kavirkobra19/KavirStore",
+      "enabled": true,
+      "featured": true,
+      "category": "tools",
+      "name": "Kavir Store",
+      "name_fa": "فروشگاه کویر",
+      "description": "A personal Android app store. Apps are downloaded straight from their GitHub Releases and installed through Android's own installer.",
+      "description_fa": "فروشگاه شخصی برنامه‌های اندروید. برنامه‌ها مستقیم از Releaseهای گیت‌هاب دانلود و با نصب‌کننده رسمی اندروید نصب می‌شوند.",
+      "icon": null,
+      "screenshots": [],
+      "asset_pattern": "^KavirStore-.*\\.apk$",
+      "prerelease": false
+    }
+  ]
+}
