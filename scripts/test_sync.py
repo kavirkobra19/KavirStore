@@ -74,6 +74,12 @@ class Badging(unittest.TestCase):
         self.assertEqual(m["label_fa"], "نمونه")
         self.assertEqual(m["icon_path"], "res/mipmap-xxxhdpi-v4/ic_launcher.png")
 
+    def test_aapt2_minsdkversion_and_webp_icon(self):
+        text = BADGING.replace("sdkVersion:'26'", "minSdkVersion:'23'") + "application-icon-720:'res/x/ic.webp'\n"
+        m = sc.parse_badging(text)
+        self.assertEqual(m["min_sdk"], 23)  # must not pick targetSdkVersion (35)
+        self.assertEqual(m["icon_path"], "res/x/ic.webp")
+
     def test_missing_package(self):
         with self.assertRaises(sc.SyncError):
             sc.parse_badging("nothing here")
@@ -132,11 +138,11 @@ class Misc(unittest.TestCase):
             apk = Path(td) / "a.apk"
             with zipfile.ZipFile(apk, "w") as z:
                 z.writestr("res/icon.png", b"PNGDATA")
-            out = Path(td) / "icons" / "p.png"
-            self.assertTrue(sc.extract_icon(apk, "res/icon.png", out))
-            self.assertEqual(out.read_bytes(), b"PNGDATA")
-            self.assertFalse(sc.extract_icon(apk, "res/missing.png", out))
-            self.assertFalse(sc.extract_icon(apk, None, out))
+            out = Path(td) / "icons"
+            self.assertEqual(sc.extract_icon(apk, "res/icon.png", out, "org.p"), "org.p.png")
+            self.assertEqual((out / "org.p.png").read_bytes(), b"PNGDATA")
+            self.assertIsNone(sc.extract_icon(apk, "res/missing.png", out, "org.p"))
+            self.assertIsNone(sc.extract_icon(apk, None, out, "org.p"))
 
 
 if __name__ == "__main__":
