@@ -394,7 +394,6 @@ def process_source(src: dict, existing: dict | None, seen_packages: dict[str, st
 
     default_branch = info.get("default_branch") or "main"
     repo_icon, repo_shots = repo_assets(repo, default_branch)
-    owner_avatar = (info.get("owner") or {}).get("avatar_url")
 
     name = src.get("name") or auto.get("name") or repo.split("/")[1]
     entry = {
@@ -405,7 +404,8 @@ def process_source(src: dict, existing: dict | None, seen_packages: dict[str, st
         "description": src.get("description") or info.get("description") or "",
         "description_fa": src.get("description_fa"),
         "category": src.get("category", "other"),
-        "icon": src.get("icon") or auto.get("icon") or repo_icon or owner_avatar,
+        # No generic owner-avatar fallback: the app shows a letter tile instead of a misleading picture.
+        "icon": src.get("icon") or auto.get("icon") or repo_icon,
         "screenshots": src.get("screenshots") or repo_shots,
         "repo": repo,
         "repo_url": info.get("html_url") or f"https://github.com/{repo}",

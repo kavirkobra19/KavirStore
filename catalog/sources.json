@@ -14,6 +14,48 @@
       "screenshots": [],
       "asset_pattern": "^KavirStore-.*\\.apk$",
       "prerelease": false
+    },
+    {
+      "repo": "kavirkobra19/myworkgps",
+      "enabled": true,
+      "featured": true,
+      "category": "productivity",
+      "name": "Smart Attendance",
+      "name_fa": "حضور هوشمند",
+      "description": "Automatic GPS attendance: records your arrival when you reach the workplace and reports it through GitHub Actions to Telegram.",
+      "description_fa": "ثبت حضور خودکار با GPS: وقتی به محل کار می‌رسید، ورود شما با زمان دقیق ثبت و از طریق GitHub Actions به تلگرام ارسال می‌شود.",
+      "icon": null,
+      "screenshots": [],
+      "asset_pattern": "^SmartAttendance-v.*\\.apk$",
+      "prerelease": true
+    },
+    {
+      "repo": "kavirkobra19/OrderManagement",
+      "enabled": true,
+      "featured": true,
+      "category": "productivity",
+      "name": "Order Notebook",
+      "name_fa": "دفترچه سفارش",
+      "description": "Native Android notebook for customers and orders: Jalali dates, automatic invoice numbers, order images, ZIP backups, GitHub sync and Telegram.",
+      "description_fa": "دفترچه مشتریان و سفارش‌ها: تاریخ شمسی، شماره فاکتور خودکار، تصویر سفارش، پشتیبان‌گیری ZIP، همگام‌سازی با گیت‌هاب و تلگرام.",
+      "icon": null,
+      "screenshots": [],
+      "asset_pattern": "^OrderNotebook-(?!.*debug).*\\.apk$",
+      "prerelease": false
+    },
+    {
+      "repo": "kavirkobra19/BuildApp",
+      "enabled": true,
+      "featured": false,
+      "category": "tools",
+      "name": "KavirDL",
+      "name_fa": "کویر دی‌ال",
+      "description": "Android downloader that processes links on GitHub Actions (YouTube, Pinterest and sites supported by yt-dlp) and saves the files to your phone.",
+      "description_fa": "دانلودر اندروید که لینک‌ها را روی GitHub Actions پردازش می‌کند (یوتیوب، پینترست و سایت‌های پشتیبانی‌شده yt-dlp) و فایل را در گوشی ذخیره می‌کند.",
+      "icon": null,
+      "screenshots": [],
+      "asset_pattern": "^KavirDL-.*\\.apk$",
+      "prerelease": false
     }
   ]
 }
