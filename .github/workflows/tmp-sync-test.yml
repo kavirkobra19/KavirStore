@@ -35,4 +35,8 @@ jobs:
               print("   sha256", r["sha256"][:16], "signer", (r["signer"] or "")[:16], "| icon:", a["icon"])
               print("   apk:", r["apk_url"])
           PY
-          ls -la catalog/icons
+          ls -la catalog/icons || true
+          echo "=== raw aapt2 badging (KISS) ==="
+          curl -sSL -o /tmp/kiss.apk https://github.com/Neamar/KISS/releases/download/v3.26.0/KISS-v3.26.0.apk
+          AAPT2=$(ls -d "$ANDROID_HOME"/build-tools/*/aapt2 | sort -V | tail -1)
+          "$AAPT2" dump badging /tmp/kiss.apk | grep -E "^(package|sdkVersion|minSdkVersion|targetSdkVersion|application-label:|application-icon)" 

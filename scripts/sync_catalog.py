@@ -237,15 +237,16 @@ def parse_badging(text: str) -> dict:
         "version_code": int(m.group(2)),
         "version_name": m.group(3) or m.group(2),
     }
-    sdk = re.search(r"^sdkVersion:'(\d+)'", text, re.M)
+    # aapt prints "sdkVersion", aapt2 prints "minSdkVersion"; accept both (never the target SDK).
+    sdk = re.search(r"^(?:minSdkVersion|sdkVersion):'(\d+)'", text, re.M)
     out["min_sdk"] = int(sdk.group(1)) if sdk else 1
     label = re.search(r"^application-label:'([^']*)'", text, re.M)
     out["label"] = label.group(1) if label else None
     label_fa = re.search(r"^application-label-fa:'([^']*)'", text, re.M)
     out["label_fa"] = label_fa.group(1) if label_fa else None
     icons = [(int(d), p) for d, p in re.findall(r"^application-icon-(\d+):'([^']+)'", text, re.M)]
-    pngs = sorted([i for i in icons if i[1].lower().endswith(".png")], reverse=True)
-    out["icon_path"] = pngs[0][1] if pngs else None
+    rasters = sorted([i for i in icons if i[1].lower().endswith((".png", ".webp"))], reverse=True)
+    out["icon_path"] = rasters[0][1] if rasters else None
     return out
 
 
@@ -271,17 +272,19 @@ def signer_sha256(apk: Path) -> str | None:
     return m.group(1).lower() if m else None
 
 
-def extract_icon(apk: Path, icon_path: str | None, dest: Path) -> bool:
+def extract_icon(apk: Path, icon_path: str | None, dest_dir: Path, package: str) -> str | None:
+    """Copies a raster launcher icon (png/webp) out of the APK. Returns the stored file name or None."""
     if not icon_path:
-        return False
+        return None
     try:
         with zipfile.ZipFile(apk) as z:
             data = z.read(icon_path)
     except (KeyError, zipfile.BadZipFile):
-        return False
-    dest.parent.mkdir(parents=True, exist_ok=True)
-    dest.write_bytes(data)
-    return True
+        return None
+    name = package + Path(icon_path).suffix.lower()
+    dest_dir.mkdir(parents=True, exist_ok=True)
+    (dest_dir / name).write_bytes(data)
+    return name
 
 
 # --------------------------------------------------------------------------------------------------
@@ -324,8 +327,8 @@ def self_repo() -> str:
     return os.environ.get("GITHUB_REPOSITORY") or "kavirkobra19/KavirStore"
 
 
-def icon_url(package: str, version_code: int) -> str:
-    return f"https://raw.githubusercontent.com/{self_repo()}/main/catalog/icons/{package}.png?v={version_code}"
+def icon_url(filename: str, version_code: int) -> str:
+    return f"https://raw.githubusercontent.com/{self_repo()}/main/catalog/icons/{filename}?v={version_code}"
 
 
 def trim_changelog(body: str | None) -> str:
@@ -380,10 +383,10 @@ def process_source(src: dict, existing: dict | None, seen_packages: dict[str, st
             meta = apk_info(apk)
             signer = signer_sha256(apk)
             package = meta["package"]
-            has_icon = extract_icon(apk, meta["icon_path"], ICONS_DIR / f"{package}.png")
+            icon_file = extract_icon(apk, meta["icon_path"], ICONS_DIR, package)
             release = build_release(rel, asset, meta, sha, size, signer)
         auto = {"name": meta["label"] or info.get("name") or repo.split("/")[1], "name_fa": meta["label_fa"],
-                "icon": icon_url(package, meta["version_code"]) if has_icon else None}
+                "icon": icon_url(icon_file, meta["version_code"]) if icon_file else None}
 
     if package in seen_packages and seen_packages[package] != repo:
         raise SyncError(f"package {package} is already registered by {seen_packages[package]}")
