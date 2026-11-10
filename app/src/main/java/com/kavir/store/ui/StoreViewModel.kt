@@ -171,12 +171,12 @@ class StoreViewModel(application: Application) : AndroidViewModel(application) {
         return true
     }
 
-    fun setLanguage(value: String) {
+    fun changeLanguage(value: String) {
         prefs.language = value
         language = value
     }
 
-    fun setTheme(value: String) {
+    fun changeTheme(value: String) {
         prefs.theme = value
         theme = value
     }

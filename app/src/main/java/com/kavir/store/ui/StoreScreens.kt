@@ -351,20 +351,20 @@ fun SettingsScreen(vm: StoreViewModel, onLanguageChanged: () -> Unit) {
             item { SectionTitle(stringResource(R.string.settings_language)) }
             item {
                 RadioRow(stringResource(R.string.lang_system), vm.language == "system") {
-                    if (vm.language != "system") { vm.setLanguage("system"); onLanguageChanged() }
+                    if (vm.language != "system") { vm.changeLanguage("system"); onLanguageChanged() }
                 }
                 RadioRow(stringResource(R.string.lang_en), vm.language == "en") {
-                    if (vm.language != "en") { vm.setLanguage("en"); onLanguageChanged() }
+                    if (vm.language != "en") { vm.changeLanguage("en"); onLanguageChanged() }
                 }
                 RadioRow(stringResource(R.string.lang_fa), vm.language == "fa") {
-                    if (vm.language != "fa") { vm.setLanguage("fa"); onLanguageChanged() }
+                    if (vm.language != "fa") { vm.changeLanguage("fa"); onLanguageChanged() }
                 }
             }
             item { SectionTitle(stringResource(R.string.settings_theme)) }
             item {
-                RadioRow(stringResource(R.string.theme_system), vm.theme == "system") { vm.setTheme("system") }
-                RadioRow(stringResource(R.string.theme_light), vm.theme == "light") { vm.setTheme("light") }
-                RadioRow(stringResource(R.string.theme_dark), vm.theme == "dark") { vm.setTheme("dark") }
+                RadioRow(stringResource(R.string.theme_system), vm.theme == "system") { vm.changeTheme("system") }
+                RadioRow(stringResource(R.string.theme_light), vm.theme == "light") { vm.changeTheme("light") }
+                RadioRow(stringResource(R.string.theme_dark), vm.theme == "dark") { vm.changeTheme("dark") }
             }
             item { SectionTitle(stringResource(R.string.settings_about)) }
             item {
