@@ -6,12 +6,10 @@ jobs:
   t:
     runs-on: ubuntu-latest
     steps:
-      - name: List public releases (read-only, public API)
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: KSP versions for Kotlin 2.0.x
         run: |
-          for r in gpsapp myworkgps OrderManagement BuildApp; do
-            echo "=== $r"
-            gh api "repos/kavirkobra19/$r/releases?per_page=5" --jq '.[] | "\(.tag_name) pre=\(.prerelease) draft=\(.draft) pub=\(.published_at) assets=\([.assets[]|"\(.name):\(.size)"]|join(","))"' || echo "api error"
-            gh api "repos/kavirkobra19/$r" --jq '"default=\(.default_branch) fork=\(.fork) desc=\(.description)"' || true
+          curl -sSf https://repo1.maven.org/maven2/com/google/devtools/ksp/symbol-processing-gradle-plugin/maven-metadata.xml | grep -oE "<version>2\.0\.[0-9]+-[0-9.]+</version>" | sed -E 's/<[^>]+>//g' | sort -V | tail -25
+          echo "--- plugin marker artifact:"
+          for v in 2.0.21-1.0.28 2.0.21-1.0.27 2.0.21-1.0.26 2.0.21-1.0.25; do
+            printf "%s -> " $v; curl -s -o /dev/null -w "%{http_code}\n" https://repo1.maven.org/maven2/com/google/devtools/ksp/com.google.devtools.ksp.gradle.plugin/$v/com.google.devtools.ksp.gradle.plugin-$v.pom
           done
