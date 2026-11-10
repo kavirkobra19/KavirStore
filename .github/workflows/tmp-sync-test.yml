@@ -1,0 +1,38 @@
+name: tmp-sync-test
+on:
+  push:
+    branches: [tmp-sync-test]
+jobs:
+  t:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Real-world sync (nothing is committed)
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
+        run: |
+          cat > catalog/sources.json <<'JSON'
+          {"schema":1,"apps":[
+            {"repo":"Neamar/KISS","category":"tools"},
+            {"repo":"beemdevelopment/Aegis","category":"tools"},
+            {"repo":"kavirkobra19/KavirStore","category":"tools"}
+          ]}
+          JSON
+          python scripts/sync_catalog.py || true
+          echo "=== second run (must use the cache, no download) ==="
+          python scripts/sync_catalog.py || true
+          echo "=== apps.json ==="
+          python - <<'PY'
+          import json
+          d = json.load(open("catalog/apps.json"))
+          for a in d["apps"]:
+              r = a["release"]
+              print(a["name"], "|", a["package_name"], "|", r["version_name"], r["version_code"], "| minSdk", r["min_sdk"], "|", r["size"], "bytes")
+              print("   sha256", r["sha256"][:16], "signer", (r["signer"] or "")[:16], "| icon:", a["icon"])
+              print("   apk:", r["apk_url"])
+          PY
+          ls -la catalog/icons
