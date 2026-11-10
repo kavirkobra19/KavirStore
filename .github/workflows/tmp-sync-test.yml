@@ -6,37 +6,12 @@ jobs:
   t:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
-        with:
-          python-version: "3.12"
-      - name: Real-world sync (nothing is committed)
+      - name: List public releases (read-only, public API)
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          GITHUB_REPOSITORY: ${{ github.repository }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          cat > catalog/sources.json <<'JSON'
-          {"schema":1,"apps":[
-            {"repo":"Neamar/KISS","category":"tools"},
-            {"repo":"beemdevelopment/Aegis","category":"tools"},
-            {"repo":"kavirkobra19/KavirStore","category":"tools"}
-          ]}
-          JSON
-          python scripts/sync_catalog.py || true
-          echo "=== second run (must use the cache, no download) ==="
-          python scripts/sync_catalog.py || true
-          echo "=== apps.json ==="
-          python - <<'PY'
-          import json
-          d = json.load(open("catalog/apps.json"))
-          for a in d["apps"]:
-              r = a["release"]
-              print(a["name"], "|", a["package_name"], "|", r["version_name"], r["version_code"], "| minSdk", r["min_sdk"], "|", r["size"], "bytes")
-              print("   sha256", r["sha256"][:16], "signer", (r["signer"] or "")[:16], "| icon:", a["icon"])
-              print("   apk:", r["apk_url"])
-          PY
-          ls -la catalog/icons || true
-          echo "=== raw aapt2 badging (KISS) ==="
-          curl -sSL -o /tmp/kiss.apk https://github.com/Neamar/KISS/releases/download/v3.26.0/KISS-v3.26.0.apk
-          AAPT2=$(ls -d "$ANDROID_HOME"/build-tools/*/aapt2 | sort -V | tail -1)
-          "$AAPT2" dump badging /tmp/kiss.apk | grep -E "^(package|sdkVersion|minSdkVersion|targetSdkVersion|application-label:|application-icon)" 
+          for r in gpsapp myworkgps OrderManagement BuildApp; do
+            echo "=== $r"
+            gh api "repos/kavirkobra19/$r/releases?per_page=5" --jq '.[] | "\(.tag_name) pre=\(.prerelease) draft=\(.draft) pub=\(.published_at) assets=\([.assets[]|"\(.name):\(.size)"]|join(","))"' || echo "api error"
+            gh api "repos/kavirkobra19/$r" --jq '"default=\(.default_branch) fork=\(.fork) desc=\(.description)"' || true
+          done
