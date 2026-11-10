@@ -1,7 +1,42 @@
 {
   "schema": 1,
-  "generated_at": "2026-11-10T12:19:30Z",
+  "generated_at": "2026-11-10T12:40:15Z",
   "apps": [
+    {
+      "id": "ir.kavir.ordernotebook",
+      "name": "Order Notebook",
+      "name_fa": "دفترچه سفارش",
+      "package_name": "ir.kavir.ordernotebook",
+      "description": "Native Android notebook for customers and orders: Jalali dates, automatic invoice numbers, order images, ZIP backups, GitHub sync and Telegram.",
+      "description_fa": "دفترچه مشتریان و سفارش‌ها: تاریخ شمسی، شماره فاکتور خودکار، تصویر سفارش، پشتیبان‌گیری ZIP، همگام‌سازی با گیت‌هاب و تلگرام.",
+      "category": "productivity",
+      "icon": null,
+      "screenshots": [],
+      "repo": "kavirkobra19/OrderManagement",
+      "repo_url": "https://github.com/kavirkobra19/OrderManagement",
+      "featured": true,
+      "enabled": true,
+      "release": {
+        "tag": "v1.0.3",
+        "version_name": "1.0.3",
+        "version_code": 3,
+        "apk_url": "https://github.com/kavirkobra19/OrderManagement/releases/download/v1.0.3/OrderNotebook-1.0.3.apk",
+        "apk_name": "OrderNotebook-1.0.3.apk",
+        "size": 14977725,
+        "sha256": "b967aec7d8aa8ed74fc5a9c58809a4c6da8d13974e2b1afc5703fb69decb3f62",
+        "min_sdk": 26,
+        "changelog": "**Full Changelog**: https://github.com/kavirkobra19/OrderManagement/commits/v1.0.3",
+        "published_at": "2026-11-10T12:39:24Z",
+        "signer": "f30d4f82a5b3f02700b8230ab85aa458300ba5f98bc2e85f05e3177cf4446c48",
+        "asset_id": 731389255,
+        "asset_updated_at": "2026-11-10T12:39:24Z"
+      },
+      "auto": {
+        "name": "دفترچه سفارش",
+        "name_fa": "دفترچه سفارش",
+        "icon": null
+      }
+    },
     {
       "id": "ir.mmdkavir.smartattendance",
       "name": "Smart Attendance",
